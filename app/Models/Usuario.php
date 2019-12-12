@@ -8,4 +8,7 @@ class usuario extends Model
 {
     public $timestamps = false;
     //
+    protected $fillable = [
+        'name', 'email', 'password',
+    ];
 }

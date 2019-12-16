@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Produtos;
 
 class ProdutosTableSeeder extends Seeder
 {
@@ -11,6 +12,11 @@ class ProdutosTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Produto::create([
+        'produto'     => 'celular',
+        'quantidade'  => 5,
+        'valor'       => 50.5,
+        'user_id'     => 1,
+        ])
     }
 }

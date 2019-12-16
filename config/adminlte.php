@@ -16,7 +16,7 @@ return [
 
     'title' => 'Prodeb',
     'title_prefix' => '',
-    'title_postfix' => 'prodeb',
+    'title_postfix' => '/Produtos',
 
     /*
     |--------------------------------------------------------------------------
@@ -31,7 +31,7 @@ return [
     */
     
     'logo' => '<b>Prodeb</b> TI',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo_img' => 'vendor/adminlte/dist/img/logo-prodeb.png',
     'logo_img_class' => 'brand-image-xl',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -181,80 +181,42 @@ return [
             'topnav' => true,
         ],
         [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
+            'text' => 'inicio',
+            'url'  => 'home',
+            'icon' => 'fas fa-home',
            // 'can'  => 'manage-blog',
         ],
+      
+        ['header' => 'Configurações do Produto'],
+        
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'fas fa-house-damage',
-            'label'       => 4,
-            'label_color' => 'success',
-        ],
-        ['header' => 'account_settings'],
-        [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-            
-        ],
-        [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
+            'text'    => 'Produto',
+            'icon'    => 'fas fa-cart-plus',
             'submenu' => [
                 [
-                    'text' => 'level_one',
+                    'text' => 'Cadastra Produto',
                     'url'  => '#',
+                    'icon' => 'fas fa-plus-circle',
                 ],
                 [
-                    'text'    => 'level_one',
+                    'text' => 'Consulta Produto',
+                    'url'  => '#',
+                    'icon' => 'fas fa-search',
+                ],
+                [
+                    'text'    => 'Editar Produto',
                     'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
+                    'icon' => 'fas fa-edit',
+                
                 ],
                 [
-                    'text' => 'level_one',
+                    'text' => 'Excluir Produto',
                     'url'  => '#',
+                    'icon' => 'fas fa-trash-alt',
                 ],
             ],
         ],
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'aqua',
-        ],
+      
     ],
 
     /*

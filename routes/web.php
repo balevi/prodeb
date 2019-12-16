@@ -12,7 +12,7 @@
 */
 Auth::routes();
 
-Route::get('/perfil','perfilController@index');
+Route::get('/cadastro','CadastroController@index');
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Route::get('/', 'HomeController@index')->middleware('auth');

@@ -3,7 +3,7 @@
 @section('title', 'Prodeb')
 
 @section('content_header')
-    <h1 class="m-0 text-dark">Prodeb TI</h1>
+    <h1 class="m-0 text-dark">cadastre</h1>
 @stop
 
 @section('content')
@@ -11,7 +11,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <p class="mb-0">Cadastre,edite,exclua e consulte seus produtos aqui!</p>
+                    <p class="mb-0">tela cadastro!</p>
                 </div>
             </div>
         </div>

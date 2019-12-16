@@ -14,9 +14,9 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'Prodeb',
     'title_prefix' => '',
-    'title_postfix' => '',
+    'title_postfix' => 'prodeb',
 
     /*
     |--------------------------------------------------------------------------
@@ -29,13 +29,15 @@ return [
     | https://github.com/jeroennoten/Laravel-AdminLTE/#62-logo
     |
     */
-
-    'logo' => '<b>Admin</b>LTE',
+    
+    'logo' => '<b>Prodeb</b> TI',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image-xl',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
     'logo_img_alt' => 'AdminLTE',
+
+    
 
     /*
     |--------------------------------------------------------------------------
@@ -48,13 +50,13 @@ return [
     | https://github.com/jeroennoten/Laravel-AdminLTE/#63-layout
     |
     */
-
+     
     'layout_topnav' => null,
     'layout_boxed' => null,
     'layout_fixed_sidebar' => null,
     'layout_fixed_navbar' => null,
     'layout_fixed_footer' => null,
-
+    
     /*
     |--------------------------------------------------------------------------
     | Extra Classes
@@ -181,12 +183,12 @@ return [
         [
             'text' => 'blog',
             'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
+           // 'can'  => 'manage-blog',
         ],
         [
             'text'        => 'pages',
             'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
+            'icon'        => 'fas fa-house-damage',
             'label'       => 4,
             'label_color' => 'success',
         ],
@@ -200,6 +202,7 @@ return [
             'text' => 'change_password',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
+            
         ],
         [
             'text'    => 'multilevel',

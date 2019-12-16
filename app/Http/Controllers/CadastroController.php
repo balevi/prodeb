@@ -16,6 +16,6 @@ class PerfilController extends Controller
        // $name='carlos';
        // $lastName = 'Ferreira';
        //,compact('name','lastName')
-        return view('perfil');
+        return view('cadastro');
     }
 }

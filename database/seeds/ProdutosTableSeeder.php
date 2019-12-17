@@ -13,11 +13,11 @@ class ProdutosTableSeeder extends Seeder
     public function run()
     {
         Produtos::create([
-        'id'           => 1,
+        'id'          => 1,
         'produto'     => 'celular',
         'quantidade'  => 5,
         'valor'       => 50.5,
-        'user_id'     => 2,
+        'user_id'     => 1,
         ]);
     }
 }

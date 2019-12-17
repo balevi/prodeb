@@ -13,9 +13,11 @@
 Auth::routes();
 Route::get('/home','HomeController@index')->name('home')->middleware('auth');
 Route::get('/','HomeController@index')->middleware('auth');
-Route::get('/cadastro','CadastroController@index');
-Route::get('/consulta','ConsultaController@index');
-Route::get('/editar','EditarController@index');
-Route::get('/excluir','ExcluirController@index');
+
+Route::resource('produto','ProdutoController');
+//Route::get('/cadastro','CadastroController@index');
+//Route::get('/consulta','ConsultaController@index');
+//Route::get('/editar','EditarController@index');
+//Route::get('/excluir','ExcluirController@index');
 
 

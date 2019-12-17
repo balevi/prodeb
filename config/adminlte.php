@@ -195,12 +195,12 @@ return [
             'submenu' => [
                 [
                     'text' => 'Cadastra Produto',
-                    'url'  => '#',
+                    'url'  => 'produto/create',
                     'icon' => 'fas fa-plus-circle',
                 ],
                 [
                     'text' => 'Consulta Produto',
-                    'url'  => '#',
+                    'url'  => 'produto',
                     'icon' => 'fas fa-search',
                 ],
                 [

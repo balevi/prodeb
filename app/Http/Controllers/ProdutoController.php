@@ -13,7 +13,12 @@ class ProdutoController extends Controller
      */
     public function index()
     {
-        return view ('index');
+        $produtos = auth()->user()->produtos;
+
+        $produto = $produtos ? $produtos->produto : 'nenhum produto cadastrado';
+        $quantidade = $produtos ? $produtos->quantidade : 'nenhum produto cadastrado';
+        $valor = $produtos ? $produtos->valor : 'nenhum produto cadastrado';
+        return view ('index',compact('produto','quantidade','valor'));
     }
 
     /**

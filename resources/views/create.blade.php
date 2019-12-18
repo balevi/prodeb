@@ -13,13 +13,14 @@
                 <div class="card-body">
                     <div class="small-box bg-yellow">
                         <div class="inner">
-                            <h3>44</h3>
-                            <p>User Registrations</p>
-                         </div>
-                            <div class="icon">
-                                <i class="ion ion-person-add"></i>
-                            </div>
-                            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                            <h3>CADASTRE SEUS PRODUTOS!</h3><br>
+                                @csrf
+                                <form method="post" action="{{ route('produto.store') }}">
+                                <input type="text" name= "produto" placeholder= "digite seu produto..." required>
+                                <input type="text" name= "quantidade" placeholder= "digite a quantidade..." required>
+                                <input type="text" name= "valor" placeholder= "digite o preço..." required>
+                                <input type="submit">
+                         </div>                           
                     </div>
                 </div>
             </div>

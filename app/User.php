@@ -27,12 +27,9 @@ class User extends Authenticatable
     ];
 
     public function produtos(){
-        return $this->hasOne(produtos::class);
-        // relacionamento 1 pra 1 hasOne(produtos::class);many
+       return $this->hasMany(Produtos::class);
+        // return $this->hasOne('App\Produtos');
     }
 
-    //public function users(){
-       // return $this->hasOne(User::class);
-        // relacionamento 1 pra 1 hasOne(produtos::class);many
-    //}
+    
 }

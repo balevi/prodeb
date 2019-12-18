@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\Produtos;
 
 class ProdutoController extends Controller
 {
@@ -13,12 +15,15 @@ class ProdutoController extends Controller
      */
     public function index()
     {
+        //$produtos = App\Produto::find(1);
+        //dd(auth()->user());
         $produtos = auth()->user()->produtos;
-
-        $produto = $produtos ? $produtos->produto : 'nenhum produto cadastrado';
-        $quantidade = $produtos ? $produtos->quantidade : 'nenhum produto cadastrado';
-        $valor = $produtos ? $produtos->valor : 'nenhum produto cadastrado';
-        return view ('index',compact('produto','quantidade','valor'));
+        //foreach($produtos as $produto){
+        //$produto =    $produtos ? $produtos->produto : 'nenhum produto cadastrado';
+        //$quantidade = $produtos ? $produtos->quantidade : 'nenhum produto cadastrado';
+        //$valor =      $produtos ? $produtos->valor : 'nenhum produto cadastrado';
+        return view ('index',compact('produtos'));
+    //}
     }
 
     /**
@@ -37,9 +42,13 @@ class ProdutoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        return "cadastra produto expecifico {$request}";
+    public function store(Request $request, Produtos $produtos)
+    {   
+        $produtos->create($request->all());
+        //$produtos->produto    = $request->produto;
+       // $produtos->quantidade = $request->quantidade;
+        //$produtos->valor      = $request->valor;
+        $produtos->save();
     }
 
     /**
@@ -50,6 +59,7 @@ class ProdutoController extends Controller
      */
     public function show($id)
     {
+        
         return "mostra produto expecifico {$id}";
     }
 

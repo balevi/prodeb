@@ -31,7 +31,7 @@ return [
     */
     
     'logo' => '<b>Prodeb</b> TI',
-    'logo_img' => 'vendor/adminlte/dist/img/logo-prodeb.png',
+    'logo_img' => 'vendor/adminlte/dist/img/prodeb-companhia.png',
     'logo_img_class' => 'brand-image-xl',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',

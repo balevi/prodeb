@@ -14,12 +14,12 @@
                     <div class="small-box bg-yellow">
                         <div class="inner">
                             <h3>CADASTRE SEUS PRODUTOS!</h3><br>
+                                <form  action="{{ route('produto.store') }}" method="post">
                                 @csrf
-                                <form method="post" action="{{ route('produto.store') }}">
                                 <input type="text" name= "produto" placeholder= "digite seu produto..." required>
                                 <input type="text" name= "quantidade" placeholder= "digite a quantidade..." required>
                                 <input type="text" name= "valor" placeholder= "digite o preço..." required>
-                                <input type="submit">
+                                <button type="submit">Enviar</button>
                          </div>                           
                     </div>
                 </div>

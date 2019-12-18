@@ -44,11 +44,20 @@ class ProdutoController extends Controller
      */
     public function store(Request $request, Produtos $produtos)
     {   
+        $pegaid = auth()->user();
+        $produtos->user_id =$pegaid->id;
         $produtos->create($request->all());
         //$produtos->produto    = $request->produto;
-       // $produtos->quantidade = $request->quantidade;
+        // $produtos->quantidade = $request->quantidade;
         //$produtos->valor      = $request->valor;
         $produtos->save();
+        if ($produtos)
+        return redirect()
+                ->route('produto.index')
+                ->with('success', 'Categoria inserida com sucesso!');
+        return redirect()
+                ->back()
+                ->with('error', 'Falha ao inserir');
     }
 
     /**
@@ -59,7 +68,6 @@ class ProdutoController extends Controller
      */
     public function show($id)
     {
-        
         return "mostra produto expecifico {$id}";
     }
 
@@ -72,6 +80,13 @@ class ProdutoController extends Controller
     public function edit($id)
     {
         return view ('editar',compact('id'));
+       // $customer = Customer::findOrFail($id);
+ 
+    //if ($customer) {
+       // return view('customers.form', compact('customer'));
+        //} else {
+        //return redirect()->back();
+        //}
     }
 
     /**
@@ -84,6 +99,11 @@ class ProdutoController extends Controller
     public function update(Request $request, $id)
     {
         return "atualizando produto expecifico {$id}";
+       // $customer = Customer::where('id', $id)->update($request->except('_token', '_method'));
+ 
+       // if ($customer) {
+           // return redirect()->route('customers.index');
+       // }
     }
 
     /**
@@ -95,5 +115,11 @@ class ProdutoController extends Controller
     public function destroy($id)
     {
         return "deletando produto expecifico {$id}";
+       // $customer = Customer::where('id', $id)->delete();
+       
+        //if ($customer) {
+            //return redirect()->route('customers.index');
+       // }
+    
     }
 }

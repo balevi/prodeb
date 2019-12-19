@@ -13,17 +13,21 @@
                 <div class="card-body">
                     <div class="small-box bg-yellow">
                         <div class="inner">                        
-                            <table  border="1" bordercolor="black">
+                            <table border="1" bordercolor="black">
                                 <tr>
                                     <td><h3 style="float: left;padding:20px;">Produtos</h3></td>
                                     <td><h3 style="float: left;padding:20px;">Quantidade</h3></td>
                                     <td><h3 style="float: left;padding:20px;">valor</h3></td>
+                                    <td></td>
+                                    <td></td>
                                 </tr>
                                 @foreach ($produtos as $produto)
                                 <tr>
-                                        <td><h2 style="float: left;padding:20px;">{{$produto->produto}}<h2></td>
-                                        <td><h2 style="float: left;padding:20px;">{{$produto->quantidade}}</h2></td>
-                                        <td><h2 style="float: left;padding:20px;">{{$produto->valor}}</h2></td>
+                                    <td><h2 style="float: left;padding:20px;">{{$produto->produto}}<h2></td>
+                                    <td><h2 style="float: left;padding:20px;">{{$produto->quantidade}}</h2></td>
+                                    <td><h2 style="float: left;padding:20px;">{{ number_format($produto->valor,2,',','')}}</h2></td>
+                                    <td><div><a href= "{{ route('editar') }}"class="btn btn-outline-primary">Editar</a></div></td>
+                                    <td><div><a href= "{{ route('produto.create') }}"class="btn btn-outline-danger">Excluir</a></div></td>
                                 </tr>
                                 @endforeach      
                             </table>

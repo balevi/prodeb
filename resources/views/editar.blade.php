@@ -11,7 +11,18 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <p class="mb-0">Edite seus produtos aqui!</p>
+                    <div class="small-box bg-yellow">
+                        <div class="inner">
+                            <h3>ATUALIZE SEU PRODUTO!</h3><br>
+                                <form  action="{{ route('produto.store') }}" method="post">
+                                @csrf
+                                {{--<input type="hidden" name= "user_id" value = "{{auth()->user()->id}}">--}}
+                                <input type="text" name= "produto" value= "{{$produtos->produto}}" required>
+                                <input type="text" name= "quantidade" placeholder= "digite a quantidade..." required>
+                                <input type="text" name= "valor" placeholder= "digite o preço..." required>
+                                <button type="submit">Salvar</button>
+                         </div>                           
+                    </div>
                 </div>
             </div>
         </div>

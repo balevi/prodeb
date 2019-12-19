@@ -8,7 +8,7 @@ use App\User;
 class Produtos extends Model
 {
     protected $fillable = [
-        'produto', 'quantidade', 'valor',
+        'produto', 'quantidade', 'valor','user_id',
     ];
 
     public function user(){

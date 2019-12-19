@@ -44,13 +44,16 @@ class ProdutoController extends Controller
      */
     public function store(Request $request, Produtos $produtos)
     {   
-        $pegaid = auth()->user();
-        $produtos->user_id =$pegaid->id;
-        $produtos->create($request->all());
+        
+        $data = $request->all();
+        $data["user_id"]= auth()->user()->id;     
+        $produtos->create($data);
+        //metodo create inseri tudo nem precisa save
         //$produtos->produto    = $request->produto;
-        // $produtos->quantidade = $request->quantidade;
-        //$produtos->valor      = $request->valor;
-        $produtos->save();
+        //$produtos->quantidade = $request->quantidade;
+        // $produtos->valor      = $request->valor;
+        //$produtos->user_id      = auth()->user()->id;
+        //$produtos->save();
         if ($produtos)
         return redirect()
                 ->route('produto.index')
@@ -121,5 +124,12 @@ class ProdutoController extends Controller
             //return redirect()->route('customers.index');
        // }
     
+    }
+
+    public function editar()
+    {
+        $produtos = auth()->user()->produtos;
+        return view ('editar',compact('produtos'));
+      
     }
 }

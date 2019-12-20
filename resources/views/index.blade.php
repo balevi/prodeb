@@ -23,11 +23,17 @@
                                 </tr>
                                 @foreach ($produtos as $produto)
                                 <tr>
+                                
                                     <td><h2 style="float: left;padding:20px;">{{$produto->produto}}<h2></td>
                                     <td><h2 style="float: left;padding:20px;">{{$produto->quantidade}}</h2></td>
                                     <td><h2 style="float: left;padding:20px;">{{ number_format($produto->valor,2,',','')}}</h2></td>
-                                    <td><div><a href= "{{ route('editar') }}"class="btn btn-outline-primary">Editar</a></div></td>
-                                    <td><div><a href= "{{ route('produto.create') }}"class="btn btn-outline-danger">Excluir</a></div></td>
+                                    <td><div><a href= "{{ route('produto.edit',$produto->id) }}"class="btn btn-outline-primary">Editar</a></div></td>
+                                
+                                    <td><div><form action="{{ route('produto.destroy', $produto->id) }}" class="form-horizontal" method="post" style="display: inline-block">
+                                    @method('DELETE')
+                                    @csrf
+                                    <input type="submit" value="Excluir" class="btn btn-outline-danger"></form></div></td>
+                                
                                 </tr>
                                 @endforeach      
                             </table>

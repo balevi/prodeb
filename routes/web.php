@@ -17,7 +17,6 @@ Route::get('/','HomeController@index')->middleware('auth');
 Route::resource('produto','ProdutoController');
 //Route::get('/cadastro','CadastroController@index');
 //Route::get('/consulta','ConsultaController@index');
-Route::get('/editar','ProdutoController@editar')->name('editar');
 //Route::get('/excluir','ExcluirController@index');
 
 

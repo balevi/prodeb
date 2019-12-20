@@ -81,10 +81,11 @@ class ProdutoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        return view ('editar',compact('id'));
-       // $customer = Customer::findOrFail($id);
- 
+    {   
+       
+        //
+        $produto = Produtos::findOrFail($id);
+        return view ('editar',compact('produto'));
     //if ($customer) {
        // return view('customers.form', compact('customer'));
         //} else {
@@ -101,12 +102,12 @@ class ProdutoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return "atualizando produto expecifico {$id}";
-       // $customer = Customer::where('id', $id)->update($request->except('_token', '_method'));
+        
+        $editar = Produtos::where('id', $id)->update($request->except('_token', '_method'));
  
-       // if ($customer) {
-           // return redirect()->route('customers.index');
-       // }
+        if ($editar) {
+            return redirect()->route('produto.index');
+        }
     }
 
     /**
@@ -117,19 +118,12 @@ class ProdutoController extends Controller
      */
     public function destroy($id)
     {
-        return "deletando produto expecifico {$id}";
-       // $customer = Customer::where('id', $id)->delete();
+        $customer = Produtos::where('id', $id)->delete();
        
-        //if ($customer) {
-            //return redirect()->route('customers.index');
-       // }
+        if ($customer) {
+            return redirect()->route('produto.index');
+        }
     
     }
 
-    public function editar()
-    {
-        $produtos = auth()->user()->produtos;
-        return view ('editar',compact('produtos'));
-      
-    }
 }

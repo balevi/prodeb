@@ -14,12 +14,12 @@
                     <div class="small-box bg-yellow">
                         <div class="inner">
                             <h3>ATUALIZE SEU PRODUTO!</h3><br>
-                                <form  action="{{ route('produto.store') }}" method="post">
+                                <form  action="{{ route('produto.update',$produto->id) }}" method="post">
+                                @method('PUT')
                                 @csrf
-                                {{--<input type="hidden" name= "user_id" value = "{{auth()->user()->id}}">--}}
-                                <input type="text" name= "produto" value= "{{$produtos->produto}}" required>
-                                <input type="text" name= "quantidade" placeholder= "digite a quantidade..." required>
-                                <input type="text" name= "valor" placeholder= "digite o preço..." required>
+                                <input type="text" name= "produto" value= "{{$produto->produto}}" required>
+                                <input type="text" name= "quantidade" value= "{{$produto->quantidade}}" required>
+                                <input type="text" name= "valor" value= "{{$produto->valor}}" required>
                                 <button type="submit">Salvar</button>
                          </div>                           
                     </div>

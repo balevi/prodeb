@@ -13,15 +13,20 @@
                 <div class="card-body">
                     <div class="small-box bg-yellow">
                         <div class="inner">
-                            <h3>CADASTRE SEUS PRODUTOS!</h3><br>
+                            <h1>CADASTRE SEUS PRODUTOS!</h1><br>
+                                <h3 style="float: left;padding:10px;">Produtos</h3>
+                                <h3 style="float: left;padding:10px;">Quantidade</h3>
+                                <h3 style="float: left;padding:10px;">valor</h3><br><br><br>
                                 <form  action="{{ route('produto.store') }}" method="post">
                                 @csrf
                                 {{--<input type="hidden" name= "user_id" value = "{{auth()->user()->id}}">--}}
-                                <input type="text" name= "produto" placeholder= "digite seu produto..." required>
-                                <input type="text" name= "quantidade" placeholder= "digite a quantidade..." required>
+                                <input type="text" name= "produto" placeholder= "digite seu produto...">
+                                <input type="text" name= "quantidade" placeholder= "digite a quantidade...">
                                 <input type="text" name= "valor" placeholder= "digite o preço..." required>
                                 <button type="submit">Enviar</button>
-                         </div>                           
+                                
+                        </div>       
+                        @include('Includes.alert')                     
                     </div>
                 </div>
             </div>

@@ -7,12 +7,32 @@
 @stop
 
 @section('content')
+<form action="{{ route('produto.show','f') }}" method="get" class="form-inline ml-2 mr-2">
+@csrf
+@include('Includes.alert')
+        <div class="input-group">
+        
+          <input class="form-control form-control-navbar" type="search" name="consulta" placeholder="Pesquisar" aria-label="search">
+          
+          <div class="input-group-append">
+          
+            <button class="btn btn-navbar" type="submit">
+              <i class="fas fa-search"></i>
+            </button>
+            
+          </div>
+          
+        </div>
+      </form>
+       
     <div class="row">
-        <div class="col-12">
+        
+        <div class="col-9">
             <div class="card">
                 <div class="card-body">
+                    
                     <div class="small-box bg-yellow">
-                        <div class="inner">                        
+                        <div class="inner">                         
                             <table border="1" bordercolor="black">
                                 <tr>
                                     <td><h3 style="float: left;padding:20px;">Produtos</h3></td>

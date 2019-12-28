@@ -8,11 +8,19 @@ use App\Produtos;
 
 class ProdutoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    protected $users;
+
+
+    public function __construct(User $user)
+    {
+        $this->middleware('auth');
+       // $this->middleware('log')->only('index');
+       $this->users = $user;
+    }
+
+
+    
+
     public function index()
     {
         //$produtos = App\Produto::find(1);
@@ -44,7 +52,14 @@ class ProdutoController extends Controller
      */
     public function store(Request $request, Produtos $produtos)
     {   
-        
+       
+        $validatedData = $request->validate([
+            'produto' => ['required', 'unique:produtos' ,'max:10', 'min:4'],
+            'quantidade' => ['required','numeric'],
+            'valor' => ['required','numeric']
+            //'quantidade' => ['required','numeric', 'max:3','min:1'],
+            //'valor' => ['required','numeric','max:5','min:2']
+        ]);
         $data = $request->all();
         $data["user_id"]= auth()->user()->id;     
         $produtos->create($data);
@@ -57,21 +72,28 @@ class ProdutoController extends Controller
         if ($produtos)
         return redirect()
                 ->route('produto.index')
-                ->with('success', 'Categoria inserida com sucesso!');
+                ->with('success','Produto Cadastrado com sucesso!');
         return redirect()
                 ->back()
-                ->with('error', 'Falha ao inserir');
+                ->with('error', 'Falha ao Cadastra');
     }
 
-    /**
+    /** style="background-color:green"
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        return "mostra produto expecifico {$id}";
+        $produtos = auth()->user()->produtos->where('produto',$request->consulta);
+       // dd($produtos);
+        if ($produtos->isNotEmpty())
+        return view ('index',compact('produtos'));
+        else 
+        return redirect()
+                ->back()
+                ->with('error', 'Produto não encontrado!');
     }
 
     /**
@@ -82,15 +104,10 @@ class ProdutoController extends Controller
      */
     public function edit($id)
     {   
-       
-        //
+   
         $produto = Produtos::findOrFail($id);
         return view ('editar',compact('produto'));
-    //if ($customer) {
-       // return view('customers.form', compact('customer'));
-        //} else {
-        //return redirect()->back();
-        //}
+    
     }
 
     /**
@@ -102,11 +119,20 @@ class ProdutoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+            
+        $validatedData = $request->validate([
+            'produto' => ['required', 'max:10', 'min:4'],
+            'quantidade' => ['required','numeric'],
+           // 'valor' => ['required|string|min:3|max:5']
+        ]);
+        //'numeric'
         $editar = Produtos::where('id', $id)->update($request->except('_token', '_method'));
  
         if ($editar) {
-            return redirect()->route('produto.index');
+            return redirect()->route('produto.index')->with('success','Produto Editado com sucesso!');
+            return redirect()
+            ->back()
+            ->with('error', 'Falha ao Editar');
         }
     }
 
@@ -121,7 +147,10 @@ class ProdutoController extends Controller
         $customer = Produtos::where('id', $id)->delete();
        
         if ($customer) {
-            return redirect()->route('produto.index');
+            return redirect()->route('produto.index')->with('success','Produto Excluido com sucesso!');
+            return redirect()
+            ->back()
+            ->with('error', 'Falha ao Excluir');
         }
     
     }

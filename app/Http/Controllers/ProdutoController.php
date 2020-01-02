@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Produtos;
+use App\Http\Requests\StoredRequest;
 
 class ProdutoController extends Controller
 {
@@ -50,16 +51,15 @@ class ProdutoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Produtos $produtos)
+    public function store(StoredRequest $request, Produtos $produtos)
     {   
        
-        $validatedData = $request->validate([
+        /*$validatedData = $request->validate([
             'produto' => ['required', 'unique:produtos' ,'max:10', 'min:4'],
             'quantidade' => ['required','numeric'],
             'valor' => ['required','numeric']
-            //'quantidade' => ['required','numeric', 'max:3','min:1'],
-            //'valor' => ['required','numeric','max:5','min:2']
-        ]);
+        ]);*/
+
         $data = $request->all();
         $data["user_id"]= auth()->user()->id;     
         $produtos->create($data);
@@ -117,15 +117,15 @@ class ProdutoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoredRequest $request, $id)
     {
             
-        $validatedData = $request->validate([
+       /* $validatedData = $request->validate([
             'produto' => ['required', 'max:10', 'min:4'],
             'quantidade' => ['required','numeric'],
            // 'valor' => ['required|string|min:3|max:5']
         ]);
-        //'numeric'
+        */
         $editar = Produtos::where('id', $id)->update($request->except('_token', '_method'));
  
         if ($editar) {

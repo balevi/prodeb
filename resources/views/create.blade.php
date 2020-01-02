@@ -20,9 +20,9 @@
                                 <form  action="{{ route('produto.store') }}" method="post">
                                 @csrf
                                 {{--<input type="hidden" name= "user_id" value = "{{auth()->user()->id}}">--}}
-                                <input type="text" name= "produto" placeholder= "digite seu produto...">
-                                <input type="text" name= "quantidade" placeholder= "digite a quantidade...">
-                                <input type="text" name= "valor" placeholder= "digite o preço..." required>
+                                <input type="text" name= "produto" placeholder= "digite seu produto..." value = "{{old('produto')}}">
+                                <input type="text" name= "quantidade" placeholder= "digite a quantidade..." value = "{{old('quantidade')}}">
+                                <input type="text" name= "valor" placeholder= "digite o preço..." required value = "{{old('valor')}}">
                                 <button type="submit">Enviar</button>
                                 
                         </div>       

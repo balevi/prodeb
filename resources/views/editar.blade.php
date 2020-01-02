@@ -14,18 +14,15 @@
                     <div class="small-box bg-yellow">
                         <div class="inner">
                                 <h1>ATUALIZE SEU PRODUTO!</h1><br>
-                                <h3 style="float: left;padding:10px;">Produtos</h3>
-                                <h3 style="float: left;padding:10px;">Quantidade</h3>
+                                <h3 style="float: left;padding:10px;">Produto</h3>
+                                <h3 style="float: left;padding:10px;">&nbsp&nbsp&nbsp Quantidade</h3>
                                 <h3 style="float: left;padding:10px;">valor</h3><br><br><br>
                                     
                                 <form  action="{{ route('produto.update',$produto->id) }}" method="post">
                                 @method('PUT')
                                 @csrf
-                               
-
-                                <input type="text" name= "produto" value= "{{$produto->produto}}" required>
-                                
-                                <input type="text" name= "quantidade" value= "{{$produto->quantidade}}" required>
+                                <input type="text" name= "produto" value= "{{$produto->produto}}">&nbsp             
+                                <input type="text" name= "quantidade" value= "{{$produto->quantidade}}" required>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                 <input type="text" name= "valor" value= "{{$produto->valor}}" required>
                                 <button type="submit">Salvar</button>
                         </div>

@@ -16,7 +16,7 @@
 
                                 @if (session('success'))
                                 <div class="alert alert-success">
-                                <h1> {{ session('success')}}</h1>
+                                <h3> {{ session('success')}}</h3>
                                 </div>
                                 @endif
 

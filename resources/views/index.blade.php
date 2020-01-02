@@ -7,9 +7,9 @@
 @stop
 
 @section('content')
+@include('Includes.alert')
 <form action="{{ route('produto.show','f') }}" method="get" class="form-inline ml-2 mr-2">
 @csrf
-@include('Includes.alert')
         <div class="input-group">
         
           <input class="form-control form-control-navbar" type="search" name="consulta" placeholder="Pesquisar" aria-label="search">

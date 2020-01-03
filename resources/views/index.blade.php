@@ -43,7 +43,7 @@
                                 </tr>
                                 @foreach ($produtos as $produto)
                                 <tr>
-                                
+                                    @include('Includes.alertconfirm')
                                     <td><h2 style="float: left;padding:20px;">{{$produto->produto}}<h2></td>
                                     <td><h2 style="float: left;padding:20px;">{{$produto->quantidade}}</h2></td>
                                     <td><h2 style="float: left;padding:20px;">{{ number_format($produto->valor,2,',','')}}</h2></td>
@@ -53,7 +53,7 @@
                                     @method('DELETE')
                                     @csrf
                                     <input type="submit" value="Excluir" class="btn btn-outline-danger"></form></div></td>
-                                
+
                                 </tr>
                                 @endforeach      
                             </table>

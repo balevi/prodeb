@@ -18,17 +18,11 @@ Route::get('/home','HomeController@index')->name('home')->middleware('auth','ver
 Route::get('/','HomeController@index')->middleware('auth');
 
 Route::resource('produto','ProdutoController');
-
-Route::get('/cadastro',function(){
-        return 'caso nova';
-    })->middleware('verified');
-
+Route::get('produto.confirm/{id}','Confirmproduto@confirm')->name('produto.confirm');
 
 //Route::get('/consulta','ConsultaController@index');
 //Route::get('/excluir','ExcluirController@index');
 
-
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/home', 'HomeController@index')->name('home');

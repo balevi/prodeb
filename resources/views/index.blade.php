@@ -8,6 +8,22 @@
 
 @section('content')
 @include('Includes.alert')
+{{--@include('Includes.alertconfirm')--}}
+@if(isset($customer))
+<div class="alert alert-danger">
+                                <h3>Tem Certeza que Deseja Excluir esse Produto? </h3>
+                                <form  action="{{ route('produto.destroy',$customer->id)  }}">
+                                @method('delete')
+                                @csrf
+                                <button type="submit"class="btn btn-outline-warning">Sim</button>
+                                
+                                </form>
+                                <input type="button" value="não" class="btn btn-outline-warning">
+                                </div>
+
+
+@endif
+
 <form action="{{ route('produto.show','f') }}" method="get" class="form-inline ml-2 mr-2">
 @csrf
         <div class="input-group">
@@ -43,16 +59,14 @@
                                 </tr>
                                 @foreach ($produtos as $produto)
                                 <tr>
-                                    @include('Includes.alertconfirm')
+                                    
                                     <td><h2 style="float: left;padding:20px;">{{$produto->produto}}<h2></td>
                                     <td><h2 style="float: left;padding:20px;">{{$produto->quantidade}}</h2></td>
                                     <td><h2 style="float: left;padding:20px;">{{ number_format($produto->valor,2,',','')}}</h2></td>
                                     <td><div><a href= "{{ route('produto.edit',$produto->id) }}"class="btn btn-outline-primary">Editar</a></div></td>
+                                    <td><div><a href= "{{ route('produto.confirm',$produto->id) }}"class="btn btn-outline-danger">Excluir</a></div></td>
                                 
-                                    <td><div><form action="{{ route('produto.destroy', $produto->id) }}" class="form-horizontal" method="post" style="display: inline-block">
-                                    @method('DELETE')
-                                    @csrf
-                                    <input type="submit" value="Excluir" class="btn btn-outline-danger"></form></div></td>
+                                   
 
                                 </tr>
                                 @endforeach      

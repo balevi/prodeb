@@ -12,13 +12,14 @@
 @if(isset($customer))
 <div class="alert alert-danger">
                                 <h3>Tem Certeza que Deseja Excluir esse Produto? </h3>
-                                <form  action="{{ route('produto.destroy',$customer->id)  }}">
-                                @method('delete')
-                                @csrf
-                                <button type="submit"class="btn btn-outline-warning">Sim</button>
-                                
-                                </form>
-                                <input type="button" value="não" class="btn btn-outline-warning">
+                                <div><form action="{{ route('produto.destroy', $customer->id) }}" method="post" style="display: inline-block;padding-right:20px">
+                                    @method('DELETE')
+                                    @csrf
+                                    <input type="submit" value="Sim" class="btn btn-outline-warning"></form>
+                                    <a href= "{{route('produto.index')}}" >
+                                    <button type="submit"class="btn btn-outline-warning">Não</button>
+                                    
+                                    </a></div>
                                 </div>
 
 

@@ -87,15 +87,16 @@ class ProdutoController extends Controller
     public function show(Request $request)
     {
         
-        
-        $produtos = auth()->user()->produtos->where('produto',$request->consulta);
-       // dd($produtos);
-       $vazio = $request->consulta;
+        $consult = $request->consulta;
+        //dd($consult);
+        //$produtos = auth()->user()->produtos->where('produto','LIKE',"%$consult%")->get();
+        $produtos = auth()->user()->produtos()->where('produto','LIKE', '%' . $consult.'%')->get();
 
-        if ($vazio==null)
-        return redirect()
-                ->back()
-                ->with('error', 'informe o produto!');
+        //dd($produtos);
+        if ($consult==null)  
+       return redirect()
+               ->back()
+               ->with('error', 'informe o produto!');
 
         else if ($produtos->isNotEmpty())
         return view ('index',compact('produtos'));

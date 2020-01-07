@@ -8,22 +8,6 @@
 
 @section('content')
 @include('Includes.alert')
-{{--@include('Includes.alertconfirm')--}}
-@if(isset($customer))
-<div class="alert alert-danger">
-                                <h3>Tem Certeza que Deseja Excluir esse Produto? </h3>
-                                <div><form action="{{ route('produto.destroy', $customer->id) }}" method="post" style="display: inline-block;padding-right:20px">
-                                    @method('DELETE')
-                                    @csrf
-                                    <input type="submit" value="Sim" class="btn btn-outline-warning"></form>
-                                    <a href= "{{route('produto.index')}}" >
-                                    <button type="submit"class="btn btn-outline-warning">Não</button>
-                                    
-                                    </a></div>
-                                </div>
-
-
-@endif
 
 <form action="{{ route('produto.show','f') }}" method="get" class="form-inline ml-2 mr-2">
 @csrf

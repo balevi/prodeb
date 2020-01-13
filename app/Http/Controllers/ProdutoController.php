@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Produtos;
 use App\Http\Requests\StoredRequest;
+use App\Http\Requests\EditRequest;
 
 class ProdutoController extends Controller
 {
@@ -127,7 +128,7 @@ class ProdutoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoredRequest $request, $id)
+    public function update(EditRequest $request, $id)
     {
             
        /* $validatedData = $request->validate([

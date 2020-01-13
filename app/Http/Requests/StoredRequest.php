@@ -24,7 +24,7 @@ class StoredRequest extends FormRequest
     public function rules()
     {
         return [
-            'produto' => ['required', 'max:10', 'min:4'],
+            'produto' => ['required','unique:produtos','max:10', 'min:4'],
             'quantidade' => ['required','numeric'],
         ];
     }
@@ -33,6 +33,7 @@ class StoredRequest extends FormRequest
     {
         return [
             'produto.required' => 'O nome do produto é obrigatório',
+            'produto.unique' => 'ja existe um produto com esse nome',
             'produto.min' => 'O nome do produto deve ter mínimo 3 caracteres',
             'produto.max' => 'O nome do produto deve ter máximo 10 caracteres',
             'quantidade.required' => 'A quantidade de produto é obrigatório',

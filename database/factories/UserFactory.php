@@ -2,6 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 use App\User;
+use App\Produtos;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
@@ -25,3 +26,13 @@ $factory->define(User::class, function (Faker $faker) {
         'remember_token' => Str::random(10),
     ];
 });
+
+$factory->define(Produtos::class, function (Faker $faker) {
+    return [
+        'produto' => $faker->unique()->name, //word //->sentence() descriçao
+        'quantidade'=> $faker->unique->numberBetween($min = 100, $max = 150),
+        'valor'=> $faker->randomDigit,
+        'user_id'=> 2,
+    ];
+});
+// composer dump-autoload mamea arquivos dada base

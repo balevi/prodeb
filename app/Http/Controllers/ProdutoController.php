@@ -28,11 +28,14 @@ class ProdutoController extends Controller
         //$produtos = App\Produto::find(1);
         //dd(auth()->user());
         $produtos = auth()->user()->produtos;
+       // $produtos = produtos::all();retorna collection tambem where()->get(), ou paginas inves all usa paginate(10)
+        //$produtos = produtos::where('user_id',1)->get();
         //foreach($produtos as $produto){
         //$produto =    $produtos ? $produtos->produto : 'nenhum produto cadastrado';
         //$quantidade = $produtos ? $produtos->quantidade : 'nenhum produto cadastrado';
         //$valor =      $produtos ? $produtos->valor : 'nenhum produto cadastrado';
         return view ('index',compact('produtos'));
+        //compact descontinuada php usa  ('index',['produtos'=>$produtos']);
     //}
     }
 

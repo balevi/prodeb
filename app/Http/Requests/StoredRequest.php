@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\User;
+use App\Produtos;
 
 class StoredRequest extends FormRequest
 {
@@ -23,10 +25,13 @@ class StoredRequest extends FormRequest
      */
     public function rules()
     {
+        $produtos = auth()->user()->id;
         return [
-            'produto' => ['required','unique:produtos','max:10', 'min:4'],
+            'produto' => ['required','unique:produtos,produto,NULL,id,user_id,'. auth()->user()->id],
+            //'produto' => ['required','unique:produtos,produto,' . auth()->user()->id],
             'quantidade' => ['required','numeric'],
         ];
+        //,'max:10', 'min:4'
     }
 
     public function messages()
